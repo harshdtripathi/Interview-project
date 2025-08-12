@@ -11,7 +11,6 @@ function App() {
     <div className='w-full  overflow-x-hidden  '>
       <Routes>
         <Route path="/" element={<Landing />} />
-        {/* Add other routes here as needed */}
      
        <Route path="/questions" element={<Questions />} />
         {/* Add other routes here as needed */}

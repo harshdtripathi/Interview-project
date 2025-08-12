@@ -12,6 +12,7 @@ const StudentDetail = () => {
     }
   };
 
+
   return (
     <div className="w-full max-w-[900px] mx-auto flex flex-col gap-8 justify-center items-center py-16 px-4">
       {/* Tag */}

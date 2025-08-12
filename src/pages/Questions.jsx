@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ChatBox from "./ChatBox";
 
 const Pollresults = () => {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -15,6 +16,14 @@ const Pollresults = () => {
       console.log("Voted for option:", selectedOption);
     }
   };
+
+  const participants = [
+    "Rahul Arora",
+    "Pushpender Rautela",
+    "Rijul Zalpuri",
+    "Nadeem N",
+    "Ashwin Sharma",
+  ];
 
   return (
     <div className="w-[727px] h-auto mt-[10%] p-4 mx-auto rounded-md bg-white ">
@@ -69,7 +78,12 @@ const Pollresults = () => {
     Submit
   </button>
 </div>
-
+{/* Floating ChatBox */}
+      <ChatBox
+        role="teacher" // change to "student" when needed
+        participants={participants}
+        username="Teacher Me"
+      />
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import StarIcon from "../assets/Vector.png";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import ChatBox from "./ChatBox"; // <-- import your chatbox component
 
 export default function CreatePoll() {
   const [question, setQuestion] = useState("");
@@ -9,6 +10,8 @@ export default function CreatePoll() {
     { text: "", correct: null },
   ]);
   const [timeLimit, setTimeLimit] = useState("60");
+
+  const navigate = useNavigate();
 
   const handleAddOption = () => {
     setOptions([...options, { text: "", correct: null }]);
@@ -33,8 +36,17 @@ export default function CreatePoll() {
 
   const canAskQuestion = true;
 
+  // Example participants list (can come from API)
+  const participants = [
+    "Rahul Arora",
+    "Pushpender Rautela",
+    "Rijul Zalpuri",
+    "Nadeem N",
+    "Ashwin Sharma",
+  ];
+
   return (
-    <div className="px-6 py-10 max-w-[1440px] mx-auto">
+    <div className="px-6 py-10 max-w-[1440px] mx-auto relative">
       {/* Tag */}
       <div
         style={{
@@ -60,7 +72,9 @@ export default function CreatePoll() {
 
       {/* Question + Dropdown */}
       <div className="flex justify-between items-center w-full max-w-[865px] mb-4">
-        <label className="text-[20px] font-semibold text-black">Enter your question</label>
+        <label className="text-[20px] font-semibold text-black">
+          Enter your question
+        </label>
         <div className="relative">
           <select
             value={timeLimit}
@@ -190,17 +204,25 @@ export default function CreatePoll() {
       {/* Ask Question Button */}
       <div className="flex justify-end">
         <button
-          onClick={Navigate("/question")}
+          onClick={() => navigate("/question")}
           disabled={!canAskQuestion}
           className="w-[234px] h-[58px] rounded-[34px] text-white font-semibold"
           style={{
-            background: "linear-gradient(99.18deg, #8F64E1 -46.89%, #1D68BD 223.45%)",
+            background:
+              "linear-gradient(99.18deg, #8F64E1 -46.89%, #1D68BD 223.45%)",
             opacity: canAskQuestion ? 1 : 0.5,
           }}
         >
           Ask Question
         </button>
       </div>
+
+      {/* Floating ChatBox */}
+      <ChatBox
+        role="teacher" // change to "student" when needed
+        participants={participants}
+        username="Teacher Me"
+      />
     </div>
   );
 }
