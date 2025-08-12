@@ -1,10 +1,9 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
 import Landing from './pages/Landing'
 import Questions from './pages/Questions'
+import StudentDetail from './pages/StudentDetail'
+import CreatePoll from './pages/CreatePoll'
 
 function App() {
   
@@ -16,10 +15,9 @@ function App() {
      
        <Route path="/questions" element={<Questions />} />
         {/* Add other routes here as needed */}
+        <Route path="/student" element={<StudentDetail />} />
+        <Route path="/teacher" element={<CreatePoll />} />
       </Routes>
-
-     
-
     </div>
   )
 }
