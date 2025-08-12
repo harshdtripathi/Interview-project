@@ -8,7 +8,7 @@ const StudentDetail = () => {
 
   const handleContinue = () => {
     if (name.trim() !== "") {
-      navigate("/poll");
+      navigate("/questions");
     }
   };
 
